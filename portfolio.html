@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Iqraa : First website for quran reading</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Theme CSS -->
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!--  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
+
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet" />
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="js/angular.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="Controller" ng-init="Init()">
+  <nav id="mainNav" class="navbar  navbar-fixed-top navbar-custom iqraaNavBar text-center">
+    <div class="container text-center">
+
+            <a class="nickname absStyle" href="index.html">Iqraa</a>
+
+
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<img src="{{SelectedOwner.BackSrc}}" class="img-responsive readerBackImage" />
+<section class="center-block readerLogo ">
+
+  <img src="{{SelectedOwner.Src}}" class="img-responsive" />
+</section>
+<div class="container readerDetails">
+  <h2 class="text-center">{{SelectedOwner.Name}} </h2>
+
+
+</div>
+
+<div class="container suraDiv">
+
+    <div ng-repeat="recording in SelectedOwner.Recordings" class="recordingRow">
+
+    <div class="col-xs-6">{{recording.Name}}</div>
+    <div class="col-xs-2"><i ng-if="recording.IsPlayingVideo" ng-click="PlayVideo(recording)" class="fa fa-pause"></i><i ng-if="!recording.IsPlayingVideo" ng-click="PlayVideo(recording)" class="fa fa-play-circle-o"></i></div>
+    <div class="col-xs-2"><a href="{{recording.Path}}" ><i class="fa fa-file"></i></a></div>
+      <div class="col-xs-1"><i ng-click="ResetVideo(recording)" class="fa fa-step-backward"></i></div>
+
+    </div>
+</div>
+
+<button class="btn btn-warning center-block addRecordBtn" style="display:none;">Add New Recording</button>
+
+
+
+<div class="container col-sm-4 detailsSection text-center center-block">
+<div class="row">
+  <div class="col-xs-5"><i class="fa fa-fw fa-flag"></i></div>
+  <div class="col-xs-5"><img src="{{SelectedOwner.CountryFlag}}" class="img-responive flagImg"></img></div>
+</div>
+<div class="row">
+  <div class="col-xs-5"><i class="fa fa-fw fa-skype"></i></div>
+  <div class="col-xs-5">--</div>
+</div>
+<div class="row">
+  <div class="col-xs-5"><i class="fa fa-fw fa-mobile"></i></div>
+  <div class="col-xs-5">--</div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-5"><i class="fa fa-fw fa-envelope"></i></div>
+  <div class="col-xs-5">--</div>
+
+</div>
+<div class="row">
+</div>
+
+
+</div>
+
+<script src="js/config.js"></script>
+<script>
+var app = angular.module("myApp", []);
+
+var Controller=function($scope)
+{
+
+  $scope.SelectedOwner={};
+
+
+  var Owners=
+  {
+
+    "Sudis":
+    {
+      Name:"AbdElRahman Elsodees",
+      Src:"img/sodes.jpg",
+      BackSrc:"img/ka3ba.jpg",
+      Recordings:
+      [
+        {Name : "Al-Baqrah" , Path:"sound/sBaqrah.mp3", },
+        {Name : "Aal Imran" , Path:"sound/SaalOmran.mp3"},
+
+      ],
+      IsPlayingVideo:false,
+      CountryFlag:Flags["KSA"]
+    },
+    "Abdo":
+    {
+      Name:"AbdElbaset Abd Elsamad",
+      Src:"img/abdElbaset.jpg",
+      BackSrc:"img/egyback.jpg",
+      Recordings:
+      [
+        {Name : "Al-Baqrah" , Path:"sound/abdoBaqarah.mp3", },
+        {Name : "Aal Imran" , Path:"sound/abdoaalimran.mp3"},
+
+      ],
+      IsPlayingVideo:false,
+      CountryFlag:Flags["Egypt"]
+    },
+    "yaser":
+    {
+      Name:"Yaser Salama",
+      Src:"img/yasser.jpg",
+      BackSrc:"img/egyback.jpg",
+      Recordings:
+      [
+        {Name : "Al-Baqrah" , Path:"sound/yaserBaqrah.mp3", },
+        {Name : "Aal Imran" , Path:"sound/yaseraalImran.mp3"},
+
+      ],
+      IsPlayingVideo:false,
+      CountryFlag:Flags["Egypt"]
+    },
+    "Maher":
+    {
+      Name:"Maher Al Mueaqly",
+      Src:"img/maher.png",
+      BackSrc:"img/ka3ba.jpg",
+      Recordings:
+      [
+        {Name : "Al-Baqrah" , Path:"sound/mBaqrah.mp3", },
+        {Name : "Aal Imran" , Path:"sound/maalimran.mp3"},
+
+      ],
+      IsPlayingVideo:false,
+      CountryFlag:Flags["KSA"]
+    }
+  };
+
+
+  $scope.Init=function()
+  {
+    $scope.SelectedOwner=Owners[window.location.hash.replace("#","").trim()];
+  }
+
+  $scope.ResetVideo=function(entity)
+  {
+    if(entity.VideoInstace)
+    {
+     entity.VideoInstace.currentTime = 0;
+    }
+  }
+
+  $scope.PlayVideo=function(entity)
+  {
+    entity.IsPlayingVideo=!entity.IsPlayingVideo;
+
+    if(entity.IsPlayingVideo)
+    {
+      if(!entity.VideoInstace)
+      {
+      entity.VideoInstace = new Audio(entity.Path);
+      }
+      entity.VideoInstace.play();
+    }
+    else {
+      if(entity.VideoInstace)
+      {
+        entity.VideoInstace.pause();
+        //entity.VideoInstace.currentTime = 0;
+      }
+    }
+  }
+}
+
+app.controller("Controller", Controller);
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+
+</html>

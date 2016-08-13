@@ -1,0 +1,27 @@
+<div class="container-fluid center-block">
+<div class="col-xs-12 col-sm-5 well loginDiv">
+  <h3 class="text-center">Iqraa</h3>
+
+  <div ng-if="IsLoginShown">
+  <input type="text" class="form-control" placeholder="UserName"></input>
+  <input type="password" class="form-control" placeholder="Password"></input>
+  <div class="center-block">
+  <button class="btn btn-success">Login</button>
+  <a href="#" ng-click="ShowRegister()">Register</a>
+  </div>
+</div>
+
+<div ng-if="!IsLoginShown">
+  <input type="text" class="form-control" placeholder="UserName"></input>
+  <input type="password" class="form-control" placeholder="Password"></input>
+  <input type="text" class="form-control" placeholder="Date of birth"></input>
+  <input type="text" class="form-control" placeholder="Phone Number"></input>
+  <input type="text" class="form-control" placeholder="Email"></input>
+  <input type="text" class="form-control" placeholder="Skype"></input>
+  <div class="center-block">
+  <button class="btn btn-warning">Register</button>
+  <a href="#"  ng-click="ShowLogin()">Login</a>
+  </div>
+</div>
+</div>
+</div>

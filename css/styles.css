@@ -1,0 +1,270 @@
+.iqraaNavBar
+{
+  background-color: #5cb85c;
+  font-family: FontAwesome;
+  color: white;
+  font-weight: bold;
+}
+
+
+.nickname
+{
+  color: white;
+
+  font-weight: bolder;
+font-size: x-large;
+margin-top: -2px;;
+}
+
+.nickname:hover
+{
+  color: white;
+  text-decoration: none;
+}
+
+.rightNavBar
+{
+  margin-top: 6px;
+  font-weight: bold;
+
+  padding: 5px;
+}
+
+.mainBtns
+{
+  margin-top:5px;
+  margin-bottom:10px;
+
+}
+
+
+@-webkit-keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+  }
+}
+
+@keyframes bounceOutLeft {
+  20% {
+    opacity: 1;
+    -webkit-transform: translate3d(20px, 0, 0);
+    transform: translate3d(20px, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+  }
+}
+
+.bounceOutLeft {
+  -webkit-animation-name: bounceOutLeft;
+  animation-name: bounceOutLeft;
+}
+
+.readerSection
+{
+background-color: #f1f1f1;
+margin-bottom: 5px;
+padding: 20px;
+text-align: center;
+margin-bottom: 20px;
+
+color: #5cb85c;
+font-weight: bolder;
+font-family: FontAwesome;
+box-shadow: 20;
+box-shadow: 2px 2px 5px #888888;
+border-radius: 5px
+
+}
+
+.readerSection:hover
+{
+  transform: scale(1.1);
+
+
+}
+
+.readerImg
+{
+  margin-bottom: 30px;
+  height:236px;
+}
+
+
+.loginDiv{
+
+padding: 20px;
+margin-left: auto;
+margin-right: auto;
+box-shadow: 2px 2px 5px #888888;
+text-align:center;
+    float: none;
+}
+
+.loginDiv .form-control{
+  margin-top:10px;
+  margin-bottom: 10px;
+  height: 42px;
+}
+
+
+.loginDiv h3
+{
+  color:#5cb85c;
+  font-family: FontAwesome;
+  font-weight: bold;
+}
+
+
+h4,h2
+{
+color:#2C3E50;
+font-family: FontAwesome;
+font-weight: bold;
+}
+
+
+.detailsBtn
+{
+  background-color: #2C3E50;
+  font-family: FontAwesome;
+  font-weight: bold;
+}
+
+.readerBanner
+{
+  background-color: #f1f1f1;
+  box-shadow: 2px 2px 5px #888888;
+  height: 250px;
+
+}
+
+
+.readerBackImage
+{
+
+  left: 0px;
+  top: 0px;
+  height: 250px;
+  width: 100%;
+}
+
+.absStyle
+{
+  margin-top: 15px !important;
+top: -11px;
+position: absolute;
+
+margin-left: -29px;
+}
+
+
+.readerLogo
+{
+  margin-top: -51px;
+margin-right: auto;
+margin-left: auto;
+width: 158px;
+;
+
+}
+
+.readerLogo img
+{
+  border-radius:20%;
+  box-shadow: 2px 2px 5px #888888;
+z-index: 1000px
+}
+
+
+.readerDetails
+{
+  margin-top:53px;
+}
+
+.suraDiv
+{
+  background-color: #f1f1f1;
+  color: #2C3E50;
+  font-family: FontAwesome;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  box-shadow: 2px 2px 5px #888888;
+
+  font-weight: bold;
+  border-radius:10px;
+  font-size: x-large;
+}
+
+
+.suraDiv button
+{
+  margin-top:10px;
+}
+
+.addRecordBtn
+{
+  margin-top:20px;
+}
+
+.detailsSection
+{
+background-color: #2C3E50;
+box-shadow: 2px 2px 5px #888888;
+color:white;
+padding:32px;
+margin-top:20px;
+float:none;
+font-weight: bold;
+font-family: FontAwesome;
+font-size: large;
+margin-bottom: 20px;
+border-radius: 10px;
+display:none;
+}
+
+.recordingRow
+{
+
+  padding:20px;
+}
+.bannerImg
+{
+
+}
+
+.flagImg
+{
+    width: 34px;
+    border-radius: 50%;
+}
+
+.detailsSection .row
+{
+  margin-bottom: 10px;
+}
+
+
+.nickname:focus
+{
+  color:white;
+}
+
+
+.suraDiv a
+{
+  color:#2C3E50;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Iqraa : First website for quran reading</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Theme CSS -->
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!--  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
+
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet" />
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="js/angular.js"></script>
+
+</head>
+<body ng-app="myApp" ng-controller="Controller">
+  <nav id="mainNav" class="navbar  navbar-fixed-top navbar-custom iqraaNavBar">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand nickname" href="index.html">Iqraa</a>
+        </div>
+
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse  navbar-right rightNavBar" id="bs-example-navbar-collapse-1">
+        <div class="col-xs-7 col-sm-7">
+          <input type="text" class="form-control" placeholder="Search.." ng-model="readersList">
+        </div>
+
+        <div class="col-xs-2 col-sm-2">
+            <button class="btn btn-default" ng-click="ShowLogin()">Login</button>
+        </div>
+
+        <div class="col-xs-2 col-sm-2">
+            <button class="btn btn-warning">Register</button>
+          </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+  <section id="experience" style="margin-top:80px;">
+    <div class="container" ng-if="!IsLoginShown">
+      <div class="col-sm-4" ng-repeat="reader in Readers |filter : readersList">
+        <div class="center-block readerSection">
+        <div class="col-sm-12 readerImg">
+        <img src="{{reader.Src}}" class="img-responsive center-block" style="width:100%;height:240px;"/>
+        </div>
+
+
+        <h4>{{reader.Name}}</h4>
+
+
+        <h4><img src="{{reader.CountryFlag}}" class="img-responsive center-block" style="width:50px; border-radius:50%"></img></h4>
+        <h4><button class="btn btn-success detailsBtn" ng-click="NavigateToReadersPage(reader)">Listen <i class="fa fa-bullhorn"></i></button></h4>
+      </div>
+      </div>
+    </div>
+
+
+<loginregister ng-if="IsLoginShown"></loginregister>
+
+</section>
+
+<script src="js/config.js"></script>
+
+
+<script>
+
+var app = angular.module("myApp", []);
+
+var Controller=function($scope)
+{
+  $scope.IsLoginShown=false;
+
+  $scope.ShowLogin=function()
+  {
+    $scope.IsLoginShown=true;
+  }
+  $scope.Readers=[
+    {Name: "AbdElrahman Elsodes",Country:"KSA",Age:"--",Link:"portfolio.html#Sudis",Src:'/Iqraa/img/sodes.jpg',CountryFlag:Flags["KSA"]},
+    {Name: "Maher Almuaqli",Country:"KSA",Age:"--",Link:"portfolio.html#Maher",Src:'/Iqraa/img/maher.png',CountryFlag:Flags["KSA"]},
+    {Name: "AbdElbaset AbdElsamad",Country:"Egypt",Age:"--",Link:"portfolio.html#Abdo",Src:'/Iqraa/img/abdElbaset.jpg',CountryFlag:Flags["Egypt"]},
+    {Name: "Yasser Salama",Country:"Egypt",Age:"--",Link:"portfolio.html#yaser",Src:'/Iqraa/img/yasser.jpg',CountryFlag:Flags["Egypt"]}
+  ];
+
+  $scope.NavigateToReadersPage=function(entity)
+  {
+    window.location.href=entity.Link;
+  }
+}
+
+app.controller("Controller", Controller);
+
+
+
+alert("Site is still under construction");
+
+</script>
+
+
+
+<script src="Controls/LoginRegister/LoginRegisterController.js"></script>
+
+
+</body>
+
+</html>
